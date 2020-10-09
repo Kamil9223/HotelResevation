@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using HotelReservation.BusinessLayer.Commands;
+using GalaSoft.MvvmLight.Messaging;
 using HotelReservation.BusinessLayer.Enums;
 using HotelReservation.BusinessLayer.Services.Interfaces;
 using HotelReservation.BusinessLayer.UIModels;
@@ -14,17 +14,6 @@ namespace HotelReservation.BusinessLayer.VIewModels
     {
         private readonly IReservationReadService _reservationReader;
 
-        private ContentFillOptions _contentPage;
-        public ContentFillOptions ContetnPage
-        {
-            get => _contentPage;
-            set
-            {
-                _contentPage = value;
-                RaisePropertyChanged("ContetnPage");
-            }
-        }
-
         private ObservableCollection<ReservationHeader> _reservationHeaders;
         public ObservableCollection<ReservationHeader> ReservationsHeaders
         {
@@ -32,41 +21,47 @@ namespace HotelReservation.BusinessLayer.VIewModels
             set
             {
                 _reservationHeaders = value;
-                RaisePropertyChanged("ReservationsHeaders");
+                RaisePropertyChanged(nameof(ReservationsHeaders));
+            }
+        }
+
+        private ReservationDetails _reservationDetails;
+        public ReservationDetails ReservationDetails
+        {
+            get => _reservationDetails;
+            set
+            {
+                _reservationDetails = value;
+                RaisePropertyChanged(nameof(ReservationDetails));
             }
         }
 
         public ICommand LoadReservations { get; set; }
+        public ICommand ShowReservationDetails { get; set; }
 
-        private ReservationDetailCommand _showReservationDetails { get; set; }
-        public ICommand ShowReservationDetails 
-        {
-            get => _showReservationDetails;
-        }
 
         public ReservationViewModel(IReservationReadService reservationReader)
         {
-            ContetnPage = ContentFillOptions.ReservationsList;
             _reservationReader = reservationReader;
-            _showReservationDetails = new ReservationDetailCommand(async (id) =>
+
+            ShowReservationDetails = new RelayCommand<int>(async (id) =>
             {
                 await ShowDetails(id);
-                ContetnPage = ContentFillOptions.ReservationsDetails;
+                Messenger.Default.Send(ContentFillOptions.ReservationsDetails);
             });
-            LoadReservations = new RelayCommand(async () =>  await Load());
+
+            LoadReservations = new RelayCommand(async () =>  await Load());   
         }
 
         public async Task Load()
         {
             var headers = await _reservationReader.GetReservationsHeaders();
             ReservationsHeaders = new ObservableCollection<ReservationHeader>(headers);
-            _showReservationDetails.RaiseCanExecuteChanged();
         }
 
-        public async Task ShowDetails(object reservationId)
+        public async Task ShowDetails(int reservationId)
         {
-            var castedId = (int)reservationId;
-            var details = await _reservationReader.GetReservationDetail(castedId);
+            ReservationDetails = await _reservationReader.GetReservationDetail(reservationId);
         }
     }
 }

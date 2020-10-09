@@ -9,7 +9,33 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ReservationDetails">
 
-    <Grid>
-        <TextBlock>DETAILS</TextBlock>
-    </Grid>
+    <StackPanel>
+        <TextBlock>
+            <TextBlock.Text>
+                <MultiBinding StringFormat="Rezerwacja na osobę: {0} {1}">
+                    <Binding Path="ReservationDetails.GuestName" />
+                    <Binding Path="ReservationDetails.GuestSurname" />
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+        <TextBlock Text="{Binding ReservationDetails.PhoneNumber, 
+            StringFormat='Numer telefonu: {0}'}" />
+        <TextBlock Text="{Binding ReservationDetails.Email, 
+            StringFormat='Email: {0}'}" />
+        <TextBlock Text="{Binding ReservationDetails.RoomNumber, 
+            StringFormat='Numer pokoju: {0}'}"/>
+        <TextBlock>
+            <TextBlock.Text>
+                <MultiBinding StringFormat="Liczba zarezerwowanych miejsc: {0} / {1}">
+                    <Binding Path="ReservationDetails.NumberOfPeople" />
+                    <Binding Path="ReservationDetails.NumberOfPlaces" />
+                </MultiBinding>
+            </TextBlock.Text>
+        </TextBlock>
+        <TextBlock Text="{Binding ReservationDetails.DateFrom, 
+            StringFormat='Rozpoczęcie rezerwacji: {0:MM-dd-yyyy}'}" />
+        <TextBlock Text="{Binding ReservationDetails.DateTo,
+            StringFormat='Zakończenie rezerwacji: {0:MM-dd-yyyy}'}" />
+    </StackPanel>
+
 </Page>

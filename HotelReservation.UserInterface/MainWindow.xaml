@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:HotelReservation.UserInterface"
+        xmlns:controls="clr-namespace:HotelReservation.UserInterface.Controls"
         xmlns:converters="clr-namespace:HotelReservation.UserInterface.Converters"
         mc:Ignorable="d"
         DataContext="{Binding Main, Source={StaticResource AppContainer}}"
         Title="Rezerwacje w hotelu" 
-        Background="Azure"
+        Background="{StaticResource MainBackgroundBrush}"
         Height="{Binding WindowHeight}" Width="{Binding WindowWidth}" ResizeMode="CanMinimize">
 
     <Grid>
@@ -19,10 +20,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0" >
-            <StackPanel>
-                <Button Content="Rezerwacje" Margin="15" Foreground="Chocolate" Command="{Binding ShowReservationsCommand}"/>
-                <Button Content="Pokoje" Margin="15" Foreground="Chocolate" Command="{Binding ShowRoomsCommand}" />
-            </StackPanel>
+            <controls:NavigationSideBar />
         </Grid>
 
         <Grid Grid.Column="1">

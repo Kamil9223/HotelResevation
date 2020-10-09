@@ -20,9 +20,13 @@ namespace HotelReservation.DataAccessLayer.DatabaseAccess.Implementations
 
         public async Task<IEnumerable<Reservations>> GetAllReservations()
         {
-            return await _context.Reservations.Include(x => x.Room)
+            var task =  _context.Reservations.Include(x => x.Room)
                 .Include(x => x.Guest)
                 .ToListAsync();
+
+            //instrukcje
+
+            return await task;
         }
 
         public async Task<IEnumerable<Reservations>> GetReservationsForGuest(int guestId)
@@ -36,6 +40,7 @@ namespace HotelReservation.DataAccessLayer.DatabaseAccess.Implementations
         public async Task<Reservations> GetReservation(int reservationId)
         {
             return await _context.Reservations.Include(x => x.Guest)
+                .Include(x => x.Room)
                 .SingleOrDefaultAsync(x => x.ReservationId == reservationId);
         }
     }

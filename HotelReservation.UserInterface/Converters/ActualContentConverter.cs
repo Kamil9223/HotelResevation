@@ -15,8 +15,6 @@ namespace HotelReservation.UserInterface.Converters
         {
             switch ((ContentFillOptions)value)
             {
-                case ContentFillOptions.Reservations:
-                    return new Reservation();
                 case ContentFillOptions.Rooms:
                     return new Rooms();
                 case ContentFillOptions.ReservationsDetails:

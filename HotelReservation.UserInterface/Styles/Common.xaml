@@ -1,0 +1,15 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:HotelReservation.UserInterface.Styles">
+
+    <Color x:Key="NavColor1">#ccffff</Color>
+    <Color x:Key="NavColor2">#66ccff</Color>
+    <Color x:Key="SideBarBackgroundColor">#0099ff</Color>
+
+    <SolidColorBrush x:Key="MainBackgroundBrush" Color="Azure" />
+    <SolidColorBrush x:Key="SideBarBackgroundBrush" Color="{StaticResource SideBarBackgroundColor}" />
+    <SolidColorBrush x:Key="NavBrush1" Color="{StaticResource NavColor1}"/>
+    <SolidColorBrush x:Key="NavBrush2" Color="{StaticResource NavColor2}"/>
+    <SolidColorBrush x:Key="FontButtonBrush" Color="Chocolate" />
+
+</ResourceDictionary>

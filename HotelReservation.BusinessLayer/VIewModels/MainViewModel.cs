@@ -1,7 +1,9 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using HotelReservation.BusinessLayer.Enums;
 using System.Windows.Input;
+
 
 namespace HotelReservation.BusinessLayer.VIewModels
 {
@@ -18,7 +20,7 @@ namespace HotelReservation.BusinessLayer.VIewModels
             set
             {
                 _contentPage = value;
-                RaisePropertyChanged("ContetnPage");
+                RaisePropertyChanged(nameof(ContetnPage));
             }
         }
 
@@ -27,8 +29,13 @@ namespace HotelReservation.BusinessLayer.VIewModels
 
         public MainViewModel()
         {
+            ContetnPage = ContentFillOptions.ReservationsList;
+            Messenger.Default.Register<ContentFillOptions>(this, (currentPage) =>
+            {
+                ContetnPage = currentPage;
+            });
             ShowRoomsCommand = new RelayCommand(() => ContetnPage = ContentFillOptions.Rooms);
-            ShowReservationsCommand = new RelayCommand(() => ContetnPage = ContentFillOptions.Reservations);
+            ShowReservationsCommand = new RelayCommand(() => ContetnPage = ContentFillOptions.ReservationsList);
         }
     }
 }

@@ -161,7 +161,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands\ReservationDetailCommand.cs" />
     <Compile Include="Enums\ContentFillOptions.cs" />
     <Compile Include="Infrastructure\AppContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -179,7 +178,9 @@
       <Name>HotelReservation.DataAccessLayer</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Commands\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />

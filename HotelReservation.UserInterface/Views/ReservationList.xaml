@@ -17,52 +17,71 @@
     </i:Interaction.Triggers>
 
     <Page.Resources>
-        <Style x:Key="cellStyle" TargetType="DataGridCell">
-            <Setter Property="Padding" Value="0" />
-            <Setter Property="Margin" Value="8" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="AllowDrop" Value="False" />
-            <Setter Property="Focusable" Value="False" />
-        </Style>
-
-        <Style x:Key="rowStyle" TargetType="DataGridRow">
-            <Setter Property="Padding" Value="0" />
-            <Setter Property="Margin" Value="0" />
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="Background" Value="WhiteSmoke" />
-            <Setter Property="HorizontalAlignment" Value="Center" />
-            <Setter Property="Focusable" Value="False" />
-        </Style>
+        <Style TargetType="DataGridCell" BasedOn="{StaticResource dgc}" />
+        <Style TargetType="ListView" BasedOn="{StaticResource lv}" />
     </Page.Resources>
 
-    <DataGrid AutoGenerateColumns="False" IsReadOnly="True" CanUserResizeColumns="False" Focusable="False"
-              CanUserAddRows="False" CanUserSortColumns="True" BorderBrush="WhiteSmoke"
-              ColumnWidth="*" RowStyle="{StaticResource rowStyle}"
-              CellStyle="{StaticResource cellStyle}" ItemsSource="{Binding ReservationsHeaders}">
-        <DataGrid.Columns>
-            <DataGridTextColumn Header="Numer Pokoju" Binding="{Binding RoomNumber}" />
-            <DataGridTextColumn Header="Rozpoczęcie pobytu" Binding="{Binding DateFrom, StringFormat={}{0:MM-dd-yyyy}}" />
-            <DataGridTextColumn Header="Zakończenie pobytu" Binding="{Binding DateTo, StringFormat={}{0:MM-dd-yyyy}}" />
+    <ListView ItemsSource="{Binding ReservationsHeaders}">
+        <ListView.View>
+            <GridView>
+                <GridView.Columns>
+                    
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <TextBlock Style="{StaticResource lbietbh}" Text="Numer Pokoju"></TextBlock>
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Style="{StaticResource lbietb}" Text="{Binding RoomNumber}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <TextBlock Style="{StaticResource lbietbh}" Text="Początek rezerwacji"></TextBlock>
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Style="{StaticResource lbietb}" Text="{Binding DateFrom, StringFormat={}{0:MM-dd-yyyy}}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <TextBlock Style="{StaticResource lbietbh}" Text="Koniec rezerwacji"></TextBlock>
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Style="{StaticResource lbietb}" Text="{Binding DateTo, StringFormat={}{0:MM-dd-yyyy}}"></TextBlock>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
 
-            <DataGridTemplateColumn>
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <Button Focusable="False" Content="Pokaż Szczegóły"
-                                CommandParameter="{Binding ReservationId}"
-                                Command="{Binding DataContext.ShowReservationDetails, RelativeSource={RelativeSource AncestorType={x:Type Page}}}"/>
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-            </DataGridTemplateColumn>
+                    <GridViewColumn>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Style="{StaticResource lbieb}" Content="Pokaż Szczegóły"
+                                        CommandParameter="{Binding ReservationId}"
+                                        Command="{Binding DataContext.ShowReservationDetails, RelativeSource={RelativeSource AncestorType={x:Type Page}}}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
 
-            <DataGridTemplateColumn>
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <Button Focusable="False" Content="Modyfikuj" />
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-            </DataGridTemplateColumn>
-        </DataGrid.Columns>
-    </DataGrid>
+                    <GridViewColumn>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Style="{StaticResource lbieb}" Content="Modyfikuj"
+                                        CommandParameter="{Binding ReservationId}"
+                                        Command="{Binding}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+
+                </GridView.Columns>
+            </GridView>
+        </ListView.View>
+    </ListView>
 
 </Page>

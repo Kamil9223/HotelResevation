@@ -2,7 +2,6 @@
 {
     public enum ContentFillOptions
     {
-        Reservations,
         Rooms,
         ReservationsList,
         ReservationsDetails

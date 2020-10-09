@@ -51,6 +51,7 @@ namespace HotelReservation.BusinessLayer.Services.Implementations
                 GuestName = details.Guest.Name,
                 GuestSurname = details.Guest.Surname,
                 NumberOfPeople = details.NumberOfPeople,
+                NumberOfPlaces = details.Room.NumberOfPlaces,
                 PhoneNumber = details.Guest.Phone
             };
 

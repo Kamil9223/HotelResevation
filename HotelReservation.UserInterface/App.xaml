@@ -6,10 +6,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              d1p1:Ignorable="d" 
              xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:HotelReservation.UserInterface.Controls"
              xmlns:ioc="clr-namespace:HotelReservation.BusinessLayer.Infrastructure;assembly=HotelReservation.BusinessLayer">
-  <Application.Resources>
-    <ResourceDictionary>
-        <ioc:AppContainer x:Key="AppContainer" d:IsDataSource="True" />
-    </ResourceDictionary>
-  </Application.Resources>
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <ioc:AppContainer x:Key="AppContainer" d:IsDataSource="True" />
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/Common.xaml"/>
+                <ResourceDictionary Source="/Styles/NavigationSideBar.xaml" />
+                <ResourceDictionary Source="/Styles/ReservationList.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </Application.Resources>
+    
 </Application>
