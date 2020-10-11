@@ -17,6 +17,7 @@
                 <ResourceDictionary Source="/Styles/Common.xaml"/>
                 <ResourceDictionary Source="/Styles/NavigationSideBar.xaml" />
                 <ResourceDictionary Source="/Styles/ReservationList.xaml" />
+                <ResourceDictionary Source="/Styles/ReservationDetails.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>

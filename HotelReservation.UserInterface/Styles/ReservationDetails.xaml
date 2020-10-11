@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:HotelReservation.UserInterface.Styles">
+
+    <Style x:Key="DetailText" TargetType="TextBlock">
+        <Setter Property="FontWeight" Value="Heavy" />
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="Margin" Value="7" />
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="Foreground" Value="{StaticResource NavBrush2}" />
+    </Style>
+    
+</ResourceDictionary>
