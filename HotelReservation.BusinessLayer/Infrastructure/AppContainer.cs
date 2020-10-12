@@ -18,7 +18,10 @@ namespace HotelReservation.BusinessLayer.Infrastructure
             SimpleIoc.Default.Register<HotelReservationContext>();
             SimpleIoc.Default.Register<IReservationReadAccessor, ReservationReadAccessor>();
             SimpleIoc.Default.Register<IReservationWriteAccessor, ReservationWriteAccessor>();
+            SimpleIoc.Default.Register<IRoomReadAccessor, RoomReadAccessor>();
+            SimpleIoc.Default.Register<IRoomWriteAccessor, IRoomWriteAccessor>();
             SimpleIoc.Default.Register<IReservationReadService, ReservationReadsService>();
+            SimpleIoc.Default.Register<IRoomService, RoomService>();
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<ReservationViewModel>();
             SimpleIoc.Default.Register<RoomsViewModel>();

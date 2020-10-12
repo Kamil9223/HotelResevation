@@ -1,14 +1,15 @@
 ﻿using GalaSoft.MvvmLight;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using HotelReservation.BusinessLayer.Services.Interfaces;
 
 namespace HotelReservation.BusinessLayer.VIewModels
 {
     public class RoomsViewModel : ViewModelBase
     {
+        private readonly IRoomService _roomService;
 
+        public RoomsViewModel(IRoomService roomService)
+        {
+            _roomService = roomService;
+        }
     }
 }

@@ -159,9 +159,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseAccess\Implementations\RoomReadAccessor.cs" />
     <Compile Include="DatabaseAccess\Interfaces\IReservationWriteAccessor.cs" />
     <Compile Include="DatabaseAccess\Implementations\ReservationWriteAccessor.cs" />
     <Compile Include="DatabaseAccess\Interfaces\IReservationReadAccessor.cs" />
+    <Compile Include="DatabaseAccess\Interfaces\IRoomReadAccessor.cs" />
+    <Compile Include="DatabaseAccess\Interfaces\IRoomWriteAccessor.cs" />
     <Compile Include="Models\Guests.cs" />
     <Compile Include="HotelReservationContext.cs" />
     <Compile Include="Models\Reservations.cs" />
