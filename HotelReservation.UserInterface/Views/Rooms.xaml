@@ -2,13 +2,89 @@
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"  
       xmlns:local="clr-namespace:HotelReservation.UserInterface.Views"
+      xmlns:converters="clr-namespace:HotelReservation.UserInterface.Converters"
+      xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
+      DataContext="{Binding Room, Source={StaticResource AppContainer}}"
       Title="Rooms">
 
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadRooms}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Page.Resources>
+        <Style TargetType="DataGridCell" BasedOn="{StaticResource dgc}" />
+        <Style TargetType="ListView" BasedOn="{StaticResource lv}" />
+    </Page.Resources>
+
     <Grid>
-        <TextBlock Text="ROOMS" />
+        <ListView ItemsSource="{Binding RoomsHeaders}">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        
+                        <GridViewColumn>
+                            <GridViewColumn.Header>
+                                <TextBlock Style="{StaticResource lbietbh}" Text="Numer Pokoju"></TextBlock>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Style="{StaticResource lbietb}" Text="{Binding RoomNumber}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn>
+                            <GridViewColumn.Header>
+                                <TextBlock Style="{StaticResource lbietbh}" Text="Rodzaj pokoju"></TextBlock>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Style="{StaticResource lbietb}" Text="{Binding RoomType, Converter={StaticResource roomTypeConverter}}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn>
+                            <GridViewColumn.Header>
+                                <TextBlock Style="{StaticResource lbietbh}" Text="Cena za dobę"></TextBlock>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Style="{StaticResource lbietb}" Text="{Binding PricePerNight}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn>
+                            <GridViewColumn.Header>
+                                <TextBlock Style="{StaticResource lbietbh}" Text="Liczba miejsc"></TextBlock>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Style="{StaticResource lbietb}" Text="{Binding NumberOfPlaces}"></TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource lbieb}" Content="Pokaż Szczegóły"
+                                        CommandParameter="{Binding RoomNumber}"
+                                        Command="{Binding DataContext.ShowRoomDetails, RelativeSource={RelativeSource AncestorType={x:Type Page}}}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+            </ListView>
     </Grid>
 </Page>

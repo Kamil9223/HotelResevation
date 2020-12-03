@@ -4,6 +4,7 @@
     {
         Rooms,
         ReservationsList,
-        ReservationsDetails
+        ReservationsDetails,
+        RoomDetails
     }
 }

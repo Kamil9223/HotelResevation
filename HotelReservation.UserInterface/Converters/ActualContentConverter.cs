@@ -21,6 +21,8 @@ namespace HotelReservation.UserInterface.Converters
                     return new ReservationDetails();
                 case ContentFillOptions.ReservationsList:
                     return new ReservationList();
+                case ContentFillOptions.RoomDetails:
+                    return new RoomDetails();
                 default:
                     return null;
             }

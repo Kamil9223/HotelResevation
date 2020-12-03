@@ -76,11 +76,19 @@
       <DependentUpon>NavigationSideBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\ActualContentConverter.cs" />
+    <Compile Include="Converters\IsOccupiedConverter.cs" />
+    <Compile Include="Converters\RoomTypeConverter.cs" />
+    <Compile Include="Views\NewReservation.xaml.cs">
+      <DependentUpon>NewReservation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ReservationDetails.xaml.cs">
       <DependentUpon>ReservationDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ReservationList.xaml.cs">
       <DependentUpon>ReservationList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RoomDetails.xaml.cs">
+      <DependentUpon>RoomDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Rooms.xaml.cs">
       <DependentUpon>Rooms.xaml</DependentUpon>
@@ -109,6 +117,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\NewReservation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\ReservationDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -117,11 +129,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\NewReservation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ReservationDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ReservationList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RoomDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

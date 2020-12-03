@@ -50,7 +50,7 @@ namespace HotelReservation.BusinessLayer.VIewModels
                 Messenger.Default.Send(ContentFillOptions.ReservationsDetails);
             });
 
-            LoadReservations = new RelayCommand(async () =>  await Load());   
+            LoadReservations = new RelayCommand(async () => await Load());   
         }
 
         public async Task Load()

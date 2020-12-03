@@ -162,14 +162,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums\ContentFillOptions.cs" />
+    <Compile Include="Enums\RoomType.cs" />
     <Compile Include="Infrastructure\AppContainer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\Implementations\ReservationReadsService.cs" />
     <Compile Include="Services\Implementations\RoomService.cs" />
+    <Compile Include="Services\Implementations\TimeService.cs" />
     <Compile Include="Services\Interfaces\IReservationReadService.cs" />
     <Compile Include="Services\Interfaces\IRoomService.cs" />
+    <Compile Include="Services\Interfaces\ITimeService.cs" />
     <Compile Include="UIModels\ReservationDetails.cs" />
     <Compile Include="UIModels\ReservationHeader.cs" />
+    <Compile Include="UIModels\RoomHeader.cs" />
+    <Compile Include="UIModels\RoomInformation.cs" />
     <Compile Include="VIewModels\MainViewModel.cs" />
     <Compile Include="VIewModels\ReservationViewModel.cs" />
     <Compile Include="VIewModels\RoomsViewModel.cs" />

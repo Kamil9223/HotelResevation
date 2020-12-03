@@ -10,6 +10,6 @@
     <SolidColorBrush x:Key="SideBarBackgroundBrush" Color="{StaticResource SideBarBackgroundColor}" />
     <SolidColorBrush x:Key="NavBrush1" Color="{StaticResource NavColor1}"/>
     <SolidColorBrush x:Key="NavBrush2" Color="{StaticResource NavColor2}"/>
-    <SolidColorBrush x:Key="FontButtonBrush" Color="Chocolate" />
+    <SolidColorBrush x:Key="FontButtonBrush" Color="Black" />
 
 </ResourceDictionary>

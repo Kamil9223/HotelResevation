@@ -7,7 +7,7 @@
         <Setter Property="Padding" Value="10" />
         <Setter Property="Margin" Value="7" />
         <Setter Property="TextAlignment" Value="Center"/>
-        <Setter Property="Foreground" Value="{StaticResource NavBrush2}" />
+        <Setter Property="Foreground" Value="{StaticResource FontButtonBrush}" />
     </Style>
     
 </ResourceDictionary>

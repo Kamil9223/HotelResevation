@@ -7,17 +7,22 @@
              d1p1:Ignorable="d" 
              xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:HotelReservation.UserInterface.Controls"
-             xmlns:ioc="clr-namespace:HotelReservation.BusinessLayer.Infrastructure;assembly=HotelReservation.BusinessLayer">
+             xmlns:ioc="clr-namespace:HotelReservation.BusinessLayer.Infrastructure;assembly=HotelReservation.BusinessLayer"
+             xmlns:converters="clr-namespace:HotelReservation.UserInterface.Converters">
     <Application.Resources>
         <ResourceDictionary>
 
             <ioc:AppContainer x:Key="AppContainer" d:IsDataSource="True" />
+
+            <converters:RoomTypeConverter x:Key="roomTypeConverter" />
+            <converters:IsOccupiedConverter x:Key="isOccupiedConverter" />
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/Common.xaml"/>
                 <ResourceDictionary Source="/Styles/NavigationSideBar.xaml" />
                 <ResourceDictionary Source="/Styles/ReservationList.xaml" />
                 <ResourceDictionary Source="/Styles/ReservationDetails.xaml" />
+                <ResourceDictionary Source="/Styles/NewReservation.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
         </ResourceDictionary>

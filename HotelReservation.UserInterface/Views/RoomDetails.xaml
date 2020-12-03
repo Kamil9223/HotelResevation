@@ -1,18 +1,19 @@
-﻿<Page x:Class="HotelReservation.UserInterface.Views.ReservationDetails"
+﻿<Page x:Class="HotelReservation.UserInterface.Views.RoomDetails"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HotelReservation.UserInterface.Views"
+      xmlns:converters="clr-namespace:HotelReservation.UserInterface.Converters"
       mc:Ignorable="d" 
-      DataContext="{Binding Reservation, Source={StaticResource AppContainer}}"
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="ReservationDetails">
+      DataContext="{Binding Room, Source={StaticResource AppContainer}}"
+      Title="RoomDetails">
 
     <Page.Resources>
         <Style TargetType="TextBlock" BasedOn="{StaticResource DetailText}" />
     </Page.Resources>
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -32,14 +33,8 @@
                 <ColumnDefinition Width="*" MaxWidth="100" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock>
-                <TextBlock.Text>
-                    <MultiBinding StringFormat="Rezerwacja na osobę: {0} {1}">
-                        <Binding Path="ReservationDetails.GuestName" />
-                        <Binding Path="ReservationDetails.GuestSurname" />
-                    </MultiBinding>
-                </TextBlock.Text>
-            </TextBlock>
+            <TextBlock Text="{Binding RoomDetails.RoomNumber,
+                StringFormat='Pokój Numer {0}'}" />
         </Grid>
 
         <Grid Grid.Row="2" Margin="0 15 0 0">
@@ -48,8 +43,8 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="{Binding ReservationDetails.PhoneNumber, 
-                StringFormat='Numer telefonu: {0}'}" />
+            <TextBlock Text="{Binding RoomDetails.Floor, 
+                StringFormat='Piętro: {0}'}" />
         </Grid>
 
         <Grid Grid.Row="3" Margin="0 15 0 0">
@@ -58,8 +53,8 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="{Binding ReservationDetails.Email, 
-                StringFormat='Email: {0}'}" />
+            <TextBlock Text="{Binding RoomDetails.Area, 
+                StringFormat='Powierzchnia: {0} m2'}" />
         </Grid>
 
         <Grid Grid.Row="4" Margin="0 15 0 0">
@@ -68,8 +63,8 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="{Binding ReservationDetails.RoomNumber, 
-                StringFormat='Numer pokoju: {0}'}"/>
+            <TextBlock Text="{Binding RoomDetails.PricePerNight, 
+                StringFormat='Cena za dobę: {0}zł'}"/>
         </Grid>
 
         <Grid Grid.Row="5" Margin="0 15 0 0">
@@ -78,14 +73,8 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock>
-                <TextBlock.Text>
-                    <MultiBinding StringFormat="Liczba zarezerwowanych miejsc: {0} / {1}">
-                        <Binding Path="ReservationDetails.NumberOfPeople" />
-                        <Binding Path="ReservationDetails.NumberOfPlaces" />
-                    </MultiBinding>
-                </TextBlock.Text>
-            </TextBlock>
+            <TextBlock Text="{Binding RoomDetails.NumberOfPlaces,
+                StringFormat='Liczba pokoi: {0}'}" />
         </Grid>
 
         <Grid Grid.Row="6" Margin="0 15 0 0">
@@ -94,8 +83,9 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <TextBlock Text="{Binding ReservationDetails.DateFrom, 
-                StringFormat='Rozpoczęcie rezerwacji: {0:MM-dd-yyyy}'}" />
+            <TextBlock Text="{Binding RoomDetails.IsOccupiedNow,
+                Converter={StaticResource isOccupiedConverter},
+                StringFormat='Dostepność: {0}'}" />
         </Grid>
 
         <Grid Grid.Row="7" Margin="0 15 0 0">
@@ -108,4 +98,5 @@
                 StringFormat='Zakończenie rezerwacji: {0:MM-dd-yyyy}'}" />
         </Grid>
     </Grid>
+    
 </Page>
